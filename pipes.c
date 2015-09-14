@@ -50,10 +50,10 @@ void Padre(void){
 		printf("Padre dice: Lee de p2 %c\n",letra);
 		if ( letra == 'Z'){
 			printf("Padre dice: Lei Z Escribi Z \n");
-			write(p1[1],&letra,1);
- 			close(p2[0]);
-			close(p1[1]);
-			close(p1[0]);
+			write(p1[1],&letra,1); //padre escribe en pipe1 y cierra el resto de I/O
+ 			close(p2[0]);//padre no lee en pipe2
+			close(p1[1]);//padre no escribe en pipe1
+			close(p1[0]);//padre no lee en pipe1
 			exit(0) ; //si el proceso termina no es necesario hacer los close anteriores, solo es a modo
 			//didáctico
 		}
